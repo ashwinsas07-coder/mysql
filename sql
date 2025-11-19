@@ -18,6 +18,18 @@ alter table teacher change department dept varchar(50)
 //drop
 drop table teacher
 
+select customer_name from customer //view customer name
+
+update customer set mobile_num="8903686" where customer_name="jagan" //update mobile num one person
+
+delete from customer where zip_code="58766"//delete row
+
+select * from customer where city="pondy" //view pondy tables
+
+select * from customer where customer_id>=2 //greater than equl
+
+alter table customer drop column mobile_num //delete mobile num column
+
 //truncate
 truncate table teacher
 
