@@ -18,6 +18,13 @@ alter table teacher change department dept varchar(50)
 //drop
 drop table teacher
 
+CREATE TABLE student (
+    id INT AUTO_INCREMENT PRIMARY KEY, //auto set number
+    name VARCHAR(100),
+    age INT,
+    city VARCHAR(100)
+);
+
 select customer_name from customer //view customer name
 
 update customer set mobile_num="8903686" where customer_name="jagan" //update mobile num one person
