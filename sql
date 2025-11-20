@@ -18,6 +18,7 @@ alter table teacher change department dept varchar(50)
 //drop
 drop table teacher
 
+    
 select customer_name from customer //view customer name
 
 update customer set mobile_num="8903686" where customer_name="jagan" //update mobile num one person
@@ -58,3 +59,12 @@ CREATE TABLE student (
 );
 
 select sum(age) as totalage from student  //sum total
+
+select max(age) as maxvalue from student //high value give
+
+select min(age) as minvalue from student //low value give 
+
+select avg(age) as avgvalue from student //give average value
+
+select count(age) as totalage from student  //count
+select count(name) from student where age="20"
