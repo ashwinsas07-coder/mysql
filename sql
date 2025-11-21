@@ -68,3 +68,20 @@ select avg(age) as avgvalue from student //give average value
 
 select count(age) as totalage from student  //count
 select count(name) from student where age="20"
+
+select name,age from student order by age asc  //order 
+select count(name),city from student group by city//group
+select count(name),city from student group by city order by count(name) desc
+
+select count(*),department from employee group by department //show dpet count and dept name
+
+select avg(salary), department
+from employee
+group by department
+order by department asc///use aggregate function and group by
+
+select avg(salary), department//high salary find desc //low find asc
+from employee
+group by department
+order by avg(salary)asc
+limit 1
