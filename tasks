@@ -10,4 +10,3 @@ FROM ecm.book12
 GROUP BY product
 ORDER BY total_sales DESC
 LIMIT 5;
-
