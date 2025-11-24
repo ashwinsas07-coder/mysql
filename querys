@@ -1,0 +1,28 @@
+UPDATE main
+SET
+  Sales = REPLACE(Sales, '$', ''),
+  Profit = REPLACE(Profit, '$', ''),
+  ShippingCost = REPLACE(Shipping Cost, '$', ''); //remove dollar symbal in row
+
+//date formate change
+SELECT * FROM ecm.book12;
+SELECT `Order Date`
+FROM ecm.book12
+LIMIT 10;
+
+ALTER TABLE ecm.book12
+ADD COLUMN order_date_fixed DATE;
+
+UPDATE ecm.book12
+SET order_date_fixed = STR_TO_DATE(`Order Date`, '%m/%d/%Y');
+
+SELECT `Order Date`, order_date_fixed
+FROM ecm.book12
+LIMIT 10;
+
+ALTER TABLE ecm.book12
+DROP COLUMN `Order Date`;
+
+ALTER TABLE ecm.book12
+CHANGE order_date_fixed `Order Date` DATE;
+
