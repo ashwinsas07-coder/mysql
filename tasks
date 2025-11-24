@@ -2,3 +2,12 @@ Task 1: Find Top-Selling Product
 Write a query to display the top 5 products based on total sales amount.
 Include: product_name, total_sales, total_quantity.
 
+SELECT 
+product AS product_name,
+SUM(Sales) AS total_sales,
+SUM(Quantity) AS total_quantity
+FROM ecm.book12
+GROUP BY product
+ORDER BY total_sales DESC
+LIMIT 5;
+
