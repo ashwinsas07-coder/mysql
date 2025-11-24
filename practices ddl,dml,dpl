@@ -1,0 +1,83 @@
+create table student(
+Id int,
+Name varchar(50),
+Age int
+)// create table 
+
+alter table student add Grade varchar(50) //add new column
+
+alter table student rename column Grade to Finalgrade //rename column
+
+INSERT INTO student (id, name, age, finalgrade) VALUES
+(1, 'Arun Kumar', 20, 'A'),
+(2, 'Priya Sharma', 19, 'B'),
+(3, 'Vikram Singh', 21, 'A'),
+(4, 'Divya Ramesh', 18, 'C'),
+(5, 'Karan Patel', 20, 'B'),
+(6, 'Sneha Das', 19, 'A'),
+(7, 'Rohit Verma', 22, 'B'),
+(8, 'Aishwarya S', 20, 'A'),
+(9, 'Manoj K', 21, 'C'),
+(10, 'Nisha R', 18, 'B'); //insert values
+
+select * from student//check tables
+
+set sql_safe_updates = 0;//safe mode
+
+update student set age=21 where id=4//update age
+
+delete from student where id=1//delete id rows
+
+select * from student where age >=19 //grater equal age19 show
+
+select * from student where name="manoj k" or name="sneha das"//  show two name 
+select * from student where name in("manoj k","sneha das")//alternate this method
+  
+select * from student where finalgrade='a'
+select * from student where finalgrade='a'or Finalgrade='b'
+select * from student where finalgrade='a'or Finalgrade='b' and age>=20
+  
+select * from student where age between 19 and 20
+select * from student where Finalgrade > 'b'
+
+select count(name)from student
+select avg(age) from student
+
+select avg(age) from student where finalgrade='a' or finalgrade='b'      
+
+select count(*),Finalgrade from student group by Finalgrade order by Finalgrade asc
+select avg(age),Finalgrade from student group by Finalgrade order by Finalgrade asc
+
+select count(*),finalgrade from student group by finalgrade order by finalgrade asc limit 1
+
+select avg(age),finalgrade from student group by Finalgrade having avg(age)>21
+
+select avg(age),finalgrade from student group by Finalgrade having avg(age) between 20 and 25
+
+select name,age from student order by age asc
+
+
+// how to using primary key 
+create table books(
+bookid int,
+title varchar(255)
+);
+
+create table authors(
+authorid int,
+authorname varchar(225)
+);
+
+insert into books(bookid,title)
+values(1,"bookone"),(2,"booktwo"),(3,"bookthree");
+insert into authors(authorid,authorname)
+values(101,"john"),(2,"aswin"),(3,"bala")
+
+select * from books
+insert into books values(3,"bookfour")
+
+delete from books where bookid=3
+
+alter table books add constraint pk_bookid primary key(bookid)
+
+update books set bookid=null
