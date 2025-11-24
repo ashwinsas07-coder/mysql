@@ -1,1 +1,4 @@
+Task 1: Find Top-Selling Product
+Write a query to display the top 5 products based on total sales amount.
+Include: product_name, total_sales, total_quantity.
 
