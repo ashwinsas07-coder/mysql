@@ -10,3 +10,18 @@ FROM ecm.book12
 GROUP BY product
 ORDER BY total_sales DESC
 LIMIT 5;
+
+Task 2: Customer Purchase Summary
+For each customer, show:
+* Total orders
+* Total sales
+* Average discount
+  Only include customers who have placed more than 3 orders.
+
+SELECT 
+`Customer Name`,
+COUNT(`Order ID`) AS total_orders,
+SUM(`Sales`) AS total_sales,AVG(`Discount`) AS average_discount
+FROM ecm.book12
+GROUP BY `Customer Name`
+HAVING COUNT(`Order ID`) > 3;
