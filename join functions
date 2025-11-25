@@ -1,0 +1,42 @@
+CREATE TABLE branch (
+    branch_id INT PRIMARY KEY,
+    branch_name VARCHAR(100),
+    address VARCHAR(255)
+);
+INSERT INTO branch (branch_id, branch_name, address)
+VALUES
+(1, 'Chennai', 'ABC Road'),
+(2, 'Coimbatore', 'XYZ Street'),
+(3, 'Madurai', '210 Main Road'),
+(4, 'Trichy', '45 Market Road'),
+(5, 'Salem', 'North Avenue');
+
+
+CREATE TABLE emp1 (
+    emp_id INT PRIMARY KEY,
+    ename VARCHAR(100),
+    job_desc VARCHAR(100),
+    salary DECIMAL(10,2),
+    branch_id INT,
+    FOREIGN KEY (branch_id) REFERENCES branch(branch_id)
+);
+INSERT INTO emp1 (emp_id, ename, job_desc, salary, branch_id)
+VALUES
+(1, 'Ravi Kumar', 'Manager', 55000.00, 1),
+(2, 'Priya Sharma', 'Accountant', 32000.00, 1),
+(3, 'Suresh Raj', 'Sales Executive', 28000.00, 2),
+(4, 'Meena Devi', 'Clerk', 22000.00, 2),
+(5, 'Arun Kumar', 'HR Assistant', 30000.00, 3),
+(6, 'Karthik Raja', 'Sales Manager', 48000.00, 1),
+(7, 'Divya R', 'Receptionist', 20000.00, 1),
+(8, 'Naveen S', 'Technician', 26000.00, 2),
+(9, 'Lakshmi V', 'Admin Staff', 24000.00, 3),
+(10, 'Manoj P', 'Office Assistant', 18000.00, 3),
+(11, 'Harini S', 'Senior Accountant', 38000.00, 4),
+(12, 'Vignesh M', 'Branch Supervisor', 42000.00, 4),
+(13, 'Deepa K', 'Data Entry Operator', 20000.00, null),
+(14, 'Rahul Das', 'Field Officer', 25000.00, null),
+(15, 'Anitha J', 'Customer Support', 23000.00, null);
+
+select * from branch;
+select * from emp1;
