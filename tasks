@@ -25,3 +25,14 @@ SUM(`Sales`) AS total_sales,AVG(`Discount`) AS average_discount
 FROM ecm.book12
 GROUP BY `Customer Name`
 HAVING COUNT(`Order ID`) > 3;
+
+Task 3: Orders With Higher Shipping Cost
+Fetch all orders where the shipping cost is above the average shipping cost of all orders.
+Show: order_id, product_name, shipping_cost.
+
+SELECT
+ `Order ID`,
+`Product`,
+`Shipping Cost`
+FROM ecm.book12
+WHERE `Shipping Cost` >(SELECT AVG(`Shipping Cost`) FROM ecm.book12);
