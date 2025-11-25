@@ -36,3 +36,36 @@ SELECT
 `Shipping Cost`
 FROM ecm.book12
 WHERE `Shipping Cost` >(SELECT AVG(`Shipping Cost`) FROM ecm.book12);
+
+Task 4: Region-Wise Monthly Sales
+Display the total monthly sales for each region.
+Output columns: region, month_name, total_sales
+Sort by region and month.
+
+SELECT
+Region,
+MONTHNAME(`Order Date`) AS month_name,
+SUM(Sales) AS total_sales
+FROM ecm.book12
+GROUP BY
+Region,
+MONTH(`Order Date`),
+MONTHNAME(`Order Date`)
+ORDER BY
+Region,
+MONTH(`Order Date`);
+
+Task 5: Identify Delayed Shipments
+Find all orders where the shipment took more days than the average aging across all orders.
+Show: order_id, aging, ship_mode, city, customer_name.
+
+SELECT * FROM ecm.book12;
+
+SELECT
+`Order ID` AS order_id,
+Aging,
+`Ship Mode` AS ship_mode,
+City,
+`Customer Name` AS customer_name
+FROM ecm.book12
+WHERE Aging > (SELECT AVG(Aging) FROM ecm.book12);
