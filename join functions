@@ -41,6 +41,7 @@ VALUES
 select * from branch;
 select * from emp1;
 
+// inner join
 SELECT 
     emp1.emp_id,
     emp1.ename,
@@ -79,3 +80,25 @@ FROM emp1 e
 INNER JOIN branch b
 ON e.branch_id = b.branch_id
 WHERE e.salary > 30000;
+
+//left join
+SELECT 
+    e.emp_id,
+    e.ename,
+    e.job_desc,
+    e.salary,
+    b.branch_name,
+    b.address
+FROM emp1 e
+LEFT JOIN branch b
+ON e.branch_id = b.branch_id;
+
+//right join 
+SELECT 
+    e.emp_id,
+    e.ename,
+    b.branch_name,
+    b.address
+FROM emp1 e
+RIGHT JOIN branch b
+ON e.branch_id = b.branch_id;
