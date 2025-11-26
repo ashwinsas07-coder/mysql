@@ -40,3 +40,42 @@ VALUES
 
 select * from branch;
 select * from emp1;
+
+SELECT 
+    emp1.emp_id,
+    emp1.ename,
+    emp1.job_desc,
+    emp1.salary,
+    branch.branch_name,
+    branch.address
+FROM emp1
+INNER JOIN branch
+ON emp1.branch_id = branch.branch_id;
+
+SELECT 
+    e.emp_id,
+    e.ename,
+    e.job_desc,
+    e.salary,
+    b.branch_name
+FROM emp1 e
+INNER JOIN branch b
+ON e.branch_id = b.branch_id
+WHERE b.branch_name = 'Chennai';
+
+SELECT 
+    b.branch_name,
+    COUNT(e.emp_id) AS total_employees
+FROM branch b
+INNER JOIN emp1 e
+ON b.branch_id = e.branch_id
+GROUP BY b.branch_name;
+
+SELECT 
+    e.ename,
+    e.salary,
+    b.branch_name
+FROM emp1 e
+INNER JOIN branch b
+ON e.branch_id = b.branch_id
+WHERE e.salary > 30000;
