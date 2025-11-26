@@ -102,3 +102,20 @@ SELECT
 FROM emp1 e
 RIGHT JOIN branch b
 ON e.branch_id = b.branch_id;
+
+//FULL OUTER JOIN
+SELECT 
+    e.emp_id, e.ename, e.job_desc, e.salary,
+    b.branch_name, b.address
+FROM emp1 e
+LEFT JOIN branch b
+ON e.branch_id = b.branch_id
+
+UNION
+
+SELECT 
+    e.emp_id, e.ename, e.job_desc, e.salary,
+    b.branch_name, b.address
+FROM emp1 e
+RIGHT JOIN branch b
+ON e.branch_id = b.branch_id;
