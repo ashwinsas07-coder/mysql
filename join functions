@@ -119,3 +119,10 @@ SELECT
 FROM emp1 e
 RIGHT JOIN branch b
 ON e.branch_id = b.branch_id;
+
+//CROSS JOIN
+SELECT 
+    e.ename,
+    b.branch_name
+FROM emp1 e
+CROSS JOIN branch b;
