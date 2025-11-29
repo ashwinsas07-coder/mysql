@@ -69,3 +69,5 @@ City,
 `Customer Name` AS customer_name
 FROM ecm.book12
 WHERE Aging > (SELECT AVG(Aging) FROM ecm.book12);
+
+join task question
