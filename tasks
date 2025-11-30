@@ -70,4 +70,20 @@ City,
 FROM ecm.book12
 WHERE Aging > (SELECT AVG(Aging) FROM ecm.book12);
 
-join task question
+join task sql question
+1.Get total sales amount per product per day
+select *from data_d;
+select * from inventory;
+select * from products;
+select * from sales;
+select * from store;
+
+SELECT 
+s.Date,
+s.Product_ID,
+p.Product_Name,
+SUM(s.Units * p.Product_Price) AS Total_Sales_Amount
+FROM sales s
+JOIN products p ON s.Product_ID = p.Product_ID
+GROUP BY s.Date, s.Product_ID, p.Product_Name
+ORDER BY s.Date, s.Product_ID;
