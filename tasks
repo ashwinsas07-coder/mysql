@@ -18,6 +18,7 @@ For each customer, show:
 * Average discount
   Only include customers who have placed more than 3 orders.
 
+
 SELECT 
 `Customer Name`,
 COUNT(`Order ID`) AS total_orders,
@@ -87,3 +88,26 @@ FROM sales s
 JOIN products p ON s.Product_ID = p.Product_ID
 GROUP BY s.Date, s.Product_ID, p.Product_Name
 ORDER BY s.Date, s.Product_ID;
+
+2.Find products that are in inventory but have zero sales
+SELECT 
+i.Product_ID,
+p.Product_Name
+FROM inventory i
+LEFT JOIN sales s ON i.Product_ID = s.Product_ID
+JOIN products p ON i.Product_ID = p.Product_ID
+WHERE s.Product_ID IS NULL;
+
+3.Get store-wise monthly sales summary
+SELECT  
+    s.Store_ID,
+    st.Store_Name,
+    YEAR(s.Date) AS Sales_Year,
+    MONTH(s.Date) AS Sales_Month,
+    DATE_FORMAT(MIN(s.Date), '%b') AS Month_Name,
+    SUM(s.Units * p.Product_Price) AS Total_Sales_Amount
+FROM sales s
+JOIN products p ON s.Product_ID = p.Product_ID
+JOIN store st ON s.Store_ID = st.Store_ID
+GROUP BY s.Store_ID,st.Store_Name,YEAR(s.Date),MONTH(s.Date)
+ORDER BY s.Store_ID,Sales_Year,Sales_Month;
