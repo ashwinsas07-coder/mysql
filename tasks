@@ -111,3 +111,48 @@ JOIN products p ON s.Product_ID = p.Product_ID
 JOIN store st ON s.Store_ID = st.Store_ID
 GROUP BY s.Store_ID,st.Store_Name,YEAR(s.Date),MONTH(s.Date)
 ORDER BY s.Store_ID,Sales_Year,Sales_Month;
+
+
+4.show all stores and their product categories sold
+SELECT
+st.Store_ID,
+st.Store_Name,
+p.Product_Category
+FROM sales s
+JOIN store st ON s.Store_ID = st.Store_ID
+JOIN products p ON s.Product_ID = p.Product_ID
+GROUP BY st.Store_ID,st.Store_Name,p.Product_Category
+ORDER BY st.Store_ID,p.Product_Category;
+
+5.calculate inventory turnover per product
+SELECT 
+    p.Product_ID,
+    p.Product_Name,
+    SUM(s.Units) AS Total_Units_Sold,
+    inv.total_stock AS Stock_On_Hand,
+
+    CASE 
+        WHEN inv.total_stock = 0 THEN NULL
+        ELSE ROUND(SUM(s.Units) / inv.total_stock, 2)
+    END AS Inventory_Turnover
+
+FROM products p
+
+LEFT JOIN sales s
+    ON p.Product_ID = s.Product_ID
+
+LEFT JOIN (
+    SELECT 
+        Product_ID,
+        SUM(Stock_On_Hand) AS total_stock
+    FROM inventory
+    GROUP BY Product_ID
+) inv
+    ON p.Product_ID = inv.Product_ID
+
+GROUP BY
+    p.Product_ID,
+    p.Product_Name,
+    inv.total_stock
+
+ORDER BY Inventory_Turnover DESC;
